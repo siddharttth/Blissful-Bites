@@ -21,7 +21,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         console.log("[Init] Initial data fetch complete");
 
         // Set up diet plan button click handler
-        const genDietPlanButton = document.getElementById('gendietplan');
+        const genDietPlanButton = document.getElementById('gendietplan') || document.querySelector('.generate-diet-plan-btn') || document.querySelector('button[onclick*="diet"], button:contains("Generate Diet plan")');
         if (genDietPlanButton) {
             console.log("[UI] Setting up diet plan button handler");
             genDietPlanButton.onclick = async function() {
@@ -81,7 +81,8 @@ document.addEventListener('DOMContentLoaded', async () => {
                     });
 
                     if (!dietResponse.ok) {
-                        throw new Error(`Diet plan generation failed: ${dietResponse.status}`);
+                        const errorData = await dietResponse.json();
+                        throw new Error(errorData.error || `Diet plan generation failed: ${dietResponse.status}`);
                     }
 
                     const dietData = await dietResponse.json();

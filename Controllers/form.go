@@ -399,11 +399,12 @@ func GenDietPlan(c *gin.Context) {
 
 	// Create a prompt for the AI model
 	prompt := fmt.Sprintf(
-		"Generate a detailed diet plan for:\nName: %v\nAge: %v\nGender: %v\n"+
+		"Generate a detailed VEGETARIAN diet plan for:\nName: %v\nAge: %v\nGender: %v\n"+
 			"Activity Level: %v\nGoals: %v\nHeight: %v cm\nWeight: %v kg\n"+
 			"Target Weight: %v kg\nMedical Conditions: %v\n\n"+
-			"Please provide a detailed daily diet plan including breakfast, lunch, dinner, and snacks. "+
-			"Include portion sizes and timing. Consider their medical conditions and fitness goals.",
+			"Please provide a detailed daily VEGETARIAN diet plan including breakfast, lunch, dinner, and snacks. "+
+			"Include portion sizes and timing. Consider their medical conditions and fitness goals. "+
+			"IMPORTANT: Include ONLY vegetarian options - NO meat, fish, or seafood. Eggs and dairy are acceptable.",
 		userData["name"], userData["age"], userData["gender"],
 		userData["activityLevel"], userData["goals"], userData["height"],
 		userData["weight"], userData["tweight"], userData["disease"])
@@ -417,7 +418,7 @@ func GenDietPlan(c *gin.Context) {
 		c.JSON(http.StatusInternalServerError, gin.H{"error": "couldn't generate diet plan"})
 		return
 	}
-	fmt.Println("✅ Diet plan generated successfully")
+	fmt.Println("[GenDietPlan] Diet plan generated successfully:", dietPlan)
 
 	// Store result in DB
 	err = DB.UpdateDiet(emailVal, dietPlan, 0)
@@ -426,9 +427,13 @@ func GenDietPlan(c *gin.Context) {
 		c.JSON(http.StatusInternalServerError, gin.H{"error": "couldn't store diet plan in database"})
 		return
 	}
-	fmt.Println("✅ Diet plan saved to database")
+	fmt.Println("[GenDietPlan] Diet plan saved to database")
 
-	c.JSON(http.StatusOK, gin.H{"diet_plan": dietPlan})
+	// Send success response with the diet plan
+	c.JSON(http.StatusOK, gin.H{
+		"status":    "success",
+		"diet_plan": dietPlan,
+	})
 }
 
 // GetUserBasicInfo returns just the name and email of the user

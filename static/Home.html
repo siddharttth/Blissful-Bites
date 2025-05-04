@@ -120,7 +120,7 @@
                   <div
                     class="u-container-layout u-valign-top-lg u-valign-top-md u-valign-top-sm u-valign-top-xs u-container-layout-2">
                     <p class="u-custom-font u-text u-text-8" id="diet_plan">{diet plan }</p>
-                    <button id="gendietplan" class="generate-button" >Generate Diet plan</button>
+                    <button id="gendietplan" class="generate-button" onclick="generateDietPlan()">Generate Diet plan</button>
                   </div>
                 </div>
               </div>
@@ -285,6 +285,98 @@
 
       // Create the chart
       var chart = new Chart(ctx, config);
+    }
+
+    // Function to generate diet plan
+    async function generateDietPlan() {
+      console.log("Generate Diet Plan button clicked");
+      const dietPlanElement = document.getElementById('diet_plan');
+      
+      try {
+        // Disable button and show loading state
+        document.getElementById('gendietplan').disabled = true;
+        console.log("Button disabled");
+        
+        if (dietPlanElement) {
+          dietPlanElement.textContent = 'Generating your personalized diet plan...';
+          console.log("Updated to loading state");
+        }
+
+        // Get email from session storage
+        const userEmail = sessionStorage.getItem('userEmail');
+        if (!userEmail) {
+          throw new Error('No user email found in session');
+        }
+
+        // Fetch fresh user data
+        console.log("Fetching fresh user data for email:", userEmail);
+        const response = await fetch(`/userDetails?email=${userEmail}`);
+        if (!response.ok) {
+          throw new Error(`Failed to fetch user data: ${response.status}`);
+        }
+        const userData = await response.json();
+        console.log("Fresh user data received:", userData);
+
+        // Prepare data for diet plan generation
+        const dietPlanData = {
+          email: userEmail,
+          name: userData.name,
+          age: userData.age,
+          gender: userData.gender,
+          activityLevel: userData.activity_level,
+          goals: userData.goals,
+          height: userData.height,
+          weight: userData.weight,
+          tweight: userData.target_weight,
+          disease: userData.diseases,
+          healthscore: userData.healthscore,
+          track: userData.track
+        };
+        console.log("Prepared diet plan request data:", dietPlanData);
+
+        // Call diet plan generation API
+        console.log("Calling diet plan generation endpoint");
+        const dietResponse = await fetch('/genDietPlan', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(dietPlanData)
+        });
+
+        if (!dietResponse.ok) {
+          const errorData = await dietResponse.json();
+          throw new Error(errorData.error || `Diet plan generation failed: ${dietResponse.status}`);
+        }
+
+        const dietData = await dietResponse.json();
+        console.log("Diet plan received:", dietData);
+
+        // Update UI with diet plan
+        if (dietPlanElement && dietData.diet_plan) {
+          if (typeof dietData.diet_plan === 'string') {
+            // Clean up and format the diet plan text
+            dietPlanElement.innerHTML = dietData.diet_plan.replace(/\n/g, '<br>');
+          } else if (Array.isArray(dietData.diet_plan) || typeof dietData.diet_plan === 'object') {
+            dietPlanElement.innerHTML = JSON.stringify(dietData.diet_plan, null, 2);
+          } else {
+            throw new Error('Invalid diet plan data type received');
+          }
+          console.log("Diet plan displayed successfully");
+        } else {
+          throw new Error('Invalid diet plan data received');
+        }
+      } catch (error) {
+        console.error('Diet plan generation failed:', error);
+        if (dietPlanElement) {
+          dietPlanElement.textContent = 'Failed to generate diet plan. Please try again.';
+          console.log("Error message displayed");
+        }
+      } finally {
+        // Re-enable button
+        document.getElementById('gendietplan').disabled = false;
+        console.log("Button re-enabled");
+      }
     }
 
     // Call the function to create the weight chart

@@ -29,7 +29,7 @@ func main() {
 	fmt.Printf("🌟 Using PORT: %s\n", port)
 
 	// Initialize Groq model
-	groqApiKey := os.Getenv("API_KEY")
+	groqApiKey := os.Getenv("GROQ_API_KEY")
 	fmt.Printf("🔑 Using Groq API key: %s\n", groqApiKey)
 	AI.InitializeGroqModel(groqApiKey)
 	fmt.Println("✨ Groq model initialized.")

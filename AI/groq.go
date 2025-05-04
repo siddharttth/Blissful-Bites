@@ -56,7 +56,7 @@ func GenGroqAI(userData string) (string, error) {
 		return "", err
 	}
 
-	prompt := fmt.Sprintf(`You are Mannat, an expert nutritionist specializing in personalized diet plans. Analyze the user's data and provide a concise, actionable diet plan. Consider:
+	prompt := fmt.Sprintf(`You are Mannat, an expert nutritionist specializing in personalized VEGETARIAN diet plans. Analyze the user's data and provide a concise, actionable vegetarian diet plan. Consider:
 
 1. Current Stats:
    - Weight, height, and BMI
@@ -66,23 +66,24 @@ func GenGroqAI(userData string) (string, error) {
 2. Goals:
    - Weight management goals (loss/gain/maintenance)
    - Specific fitness objectives
-   - Dietary preferences
+   - Dietary preferences (VEGETARIAN ONLY)
 
 3. History:
    - Past meal tracking data
    - Calorie intake patterns
 
-Provide a personalized diet plan that:
+Provide a personalized VEGETARIAN diet plan that:
 - Is realistic and sustainable
 - Aligns with their activity level
 - Accounts for any health conditions
 - Supports their specific goals
 - Includes specific meal timing if they're doing intermittent fasting
+- Contains NO meat, fish, or seafood (eggs and dairy are acceptable)
 
-Keep the response concise (3-4 lines) but impactful. Format as:
+Keep the response concise but impactful. Format as:
 - Daily calorie target
 - Key nutritional focus
-- Specific meal recommendations
+- Specific vegetarian meal recommendations
 
 User Data:
 %s`, userData)
