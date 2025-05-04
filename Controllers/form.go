@@ -399,12 +399,20 @@ func GenDietPlan(c *gin.Context) {
 
 	// Create a prompt for the AI model
 	prompt := fmt.Sprintf(
-		"Generate a detailed VEGETARIAN diet plan for:\nName: %v\nAge: %v\nGender: %v\n"+
+		"Create a personalized Indian vegetarian diet plan for:\nName: %v\nAge: %v\nGender: %v\n"+
 			"Activity Level: %v\nGoals: %v\nHeight: %v cm\nWeight: %v kg\n"+
 			"Target Weight: %v kg\nMedical Conditions: %v\n\n"+
-			"Please provide a detailed daily VEGETARIAN diet plan including breakfast, lunch, dinner, and snacks. "+
-			"Include portion sizes and timing. Consider their medical conditions and fitness goals. "+
-			"IMPORTANT: Include ONLY vegetarian options - NO meat, fish, or seafood. Eggs and dairy are acceptable.",
+			"Please provide a realistic daily Indian vegetarian diet plan with authentic dishes, home-cooked meals "+
+			"and local ingredients that are easily available in India. Include traditional breakfast, lunch, dinner and snacks. "+
+			"Consider their medical conditions and fitness goals.\n\n"+
+			"IMPORTANT FORMATTING INSTRUCTIONS:\n"+
+			"1. Write in a warm, conversational tone like a friendly nutritionist\n"+
+			"2. Use complete sentences, not just bullet points\n"+
+			"3. DO NOT use asterisks or markdown formatting\n"+
+			"4. Organize by meal times with clear headings\n"+
+			"5. Include 2-3 authentic Indian vegetarian options for each meal\n"+
+			"6. Mention specific Indian dishes (like various dals, sabzis, rotis, idli, dosa, etc.)\n"+
+			"7. Include both North and South Indian options if possible",
 		userData["name"], userData["age"], userData["gender"],
 		userData["activityLevel"], userData["goals"], userData["height"],
 		userData["weight"], userData["tweight"], userData["disease"])

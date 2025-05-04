@@ -120,7 +120,7 @@ func GenAI(userData string) (string, error) {
 	ctx := context.Background()
 
 	prompt := fmt.Sprintf(`
-You are an expert nutritionist, named "Mannat", where you assess users data (along with the calories if they have been tracking) and suggest very very short diet plans (in a nutshell, in few lines~) accordingly.
+You are an expert nutritionist, named "Blissful Bites", where you assess users data (along with the calories if they have been tracking) and suggest very very short diet plans (in a nutshell, in few lines~) accordingly.
 %s
 `, userData)
 

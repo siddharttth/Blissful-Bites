@@ -355,8 +355,88 @@
         // Update UI with diet plan
         if (dietPlanElement && dietData.diet_plan) {
           if (typeof dietData.diet_plan === 'string') {
-            // Clean up and format the diet plan text
-            dietPlanElement.innerHTML = dietData.diet_plan.replace(/\n/g, '<br>');
+            // Clean up and format the diet plan text - improve for Indian cuisine
+            let cleanText = dietData.diet_plan
+              // Remove any remaining asterisks
+              .replace(/\*/g, '')
+              // Replace common meal headings with styled versions
+              .replace(/Breakfast/g, '<h3 class="meal-heading">Breakfast</h3>')
+              .replace(/Lunch/g, '<h3 class="meal-heading">Lunch</h3>')
+              .replace(/Dinner/g, '<h3 class="meal-heading">Dinner</h3>')
+              .replace(/Morning Snack|Mid-morning snack/gi, '<h3 class="meal-heading">Morning Snack</h3>')
+              .replace(/Evening Snack|Mid-afternoon snack/gi, '<h3 class="meal-heading">Evening Snack</h3>')
+              .replace(/Daily Calorie Target/gi, '<h3 class="meal-heading">Daily Calorie Target</h3>')
+              .replace(/Key Nutritional Focus/gi, '<h3 class="meal-heading">Key Nutritional Focus</h3>')
+              .replace(/Meal Recommendations/gi, '<h3 class="meal-heading">Meal Recommendations</h3>')
+              // Add paragraph breaks
+              .replace(/\n\n/g, '</p><p>');
+
+            // Wrap in styled container with Indian-themed elements
+            dietPlanElement.innerHTML = `
+              <div class="indian-diet-plan">
+                <div class="plan-header">
+                  <h2>Your Personalized Indian Diet Plan</h2>
+                  <p class="plan-intro">Based on your profile and goals</p>
+                </div>
+                <div class="plan-content">
+                  <p>${cleanText}</p>
+                </div>
+                <div class="plan-footer">
+                  <p>For best results, stay hydrated and practice mindful eating.</p>
+                </div>
+              </div>
+            `;
+
+            // Add Indian-themed styling
+            const style = document.createElement('style');
+            style.textContent = `
+              .indian-diet-plan {
+                font-family: 'Alata', sans-serif;
+                line-height: 1.6;
+                color: #333;
+                background-color: #f9fff5;
+                border: 1px solid #96C93D;
+                border-radius: 8px;
+                padding: 20px;
+                max-height: 450px;
+                overflow-y: auto;
+              }
+              .plan-header {
+                border-bottom: 2px solid #96C93D;
+                margin-bottom: 15px;
+                padding-bottom: 10px;
+              }
+              .plan-header h2 {
+                color: #4CAF50;
+                margin: 0 0 5px 0;
+                font-size: 1.4em;
+              }
+              .plan-intro {
+                color: #666;
+                font-style: italic;
+                margin: 0;
+              }
+              .meal-heading {
+                color: #FF9800;
+                margin: 18px 0 8px 0;
+                font-weight: bold;
+                font-size: 1.2em;
+                border-left: 4px solid #FF9800;
+                padding-left: 8px;
+              }
+              .plan-content p {
+                margin: 10px 0;
+              }
+              .plan-footer {
+                border-top: 1px dashed #96C93D;
+                margin-top: 15px;
+                padding-top: 10px;
+                font-style: italic;
+                text-align: center;
+                color: #666;
+              }
+            `;
+            document.head.appendChild(style);
           } else if (Array.isArray(dietData.diet_plan) || typeof dietData.diet_plan === 'object') {
             dietPlanElement.innerHTML = JSON.stringify(dietData.diet_plan, null, 2);
           } else {
