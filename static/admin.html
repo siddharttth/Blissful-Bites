@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html style="font-size: 16px;" lang="en">
+
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="utf-8">
+  <meta name="keywords" content="">
+  <meta name="description" content="">
+  <title>admin</title>
+  <link rel="stylesheet" href="./static/nicepage.css" media="screen">
+  <link rel="stylesheet" href="./static/admin.css" media="screen">
+  <script class="u-script" type="text/javascript" src="./static/jquery-1.9.1.min.js" defer=""></script>
+  <script class="u-script" type="text/javascript" src="./static/nicepage.js" defer=""></script>
+  <script class="u-script" type="module" src="./static/admin.js" defer=""></script>
+  <meta name="generator" content="Nicepage 6.7.8, nicepage.com">
+  <link id="u-theme-google-font" rel="stylesheet"
+    href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i|Open+Sans:300,300i,400,400i,500,500i,600,600i,700,700i,800,800i">
+  <link id="u-page-google-font" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Alata:400">
+
+
+
+
+  <script type="application/ld+json">{
+		"@context": "http://schema.org",
+		"@type": "Organization",
+		"name": "WebSite6229931",
+		"logo": "images/logo-no-background.svg"
+}</script>
+  <meta name="theme-color" content="#478ac9">
+  <meta property="og:title" content="admin">
+  <meta property="og:description" content="">
+  <meta property="og:type" content="website">
+  <meta data-intl-tel-input-cdn-path="intlTelInput/">
+</head>
+
+<body data-path-to-root="./" data-include-products="false" class="u-body u-stick-footer u-xl-mode" data-lang="en">
+  <header class="u-clearfix u-grey-5 u-header u-header" id="sec-f5f7">
+    <div class="u-clearfix u-sheet u-sheet-1">
+      <a href="/admin" class="u-image u-logo u-image-1" data-image-width="1500" data-image-height="306">
+        <img src="images/logo-no-background.svg" class="u-logo-image u-logo-image-1">
+      </a>
+      <nav class="u-menu u-menu-one-level u-offcanvas u-menu-1">
+        <div class="menu-collapse" style="font-size: 1rem; letter-spacing: 0px;">
+          <a class="u-button-style u-custom-left-right-menu-spacing u-custom-padding-bottom u-custom-text-active-color u-custom-text-hover-color u-custom-top-bottom-menu-spacing u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base"
+            href="#" style="padding: 3px 10px; font-size: calc(1em + 6px);">
+            <svg class="u-svg-link" viewBox="0 0 24 24">
+              <use xlink:href="#menu-hamburger"></use>
+            </svg>
+            <svg class="u-svg-content" version="1.1" id="menu-hamburger" viewBox="0 0 16 16" x="0px" y="0px"
+              xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg">
+              <g>
+                <rect y="1" width="16" height="2"></rect>
+                <rect y="7" width="16" height="2"></rect>
+                <rect y="13" width="16" height="2"></rect>
+              </g>
+            </svg>
+          </a>
+        </div>
+        <div class="u-custom-menu u-nav-container">
+          <ul class="u-nav u-unstyled u-nav-1">
+            <li class="u-nav-item"><a
+                class="u-button-style u-nav-link u-text-active-custom-color-1 u-text-hover-custom-color-1"
+                href="/admin" style="padding: 10px 20px;">Admin</a>
+            </li>
+            <li class="u-nav-item"><a
+                class="u-button-style u-nav-link u-text-active-custom-color-1 u-text-hover-custom-color-1"
+                style="padding: 10px 20px;" href="/dm">Inbox</a>
+            </li>
+            <li class="u-nav-item"><button style="padding: 10px 20px;" id="logoutButton">Logout</button>
+            </li>
+          </ul>
+        </div>
+        <div class="u-custom-menu u-nav-container-collapse">
+          <div class="u-black u-container-style u-inner-container-layout u-opacity u-opacity-95 u-sidenav">
+            <div class="u-inner-container-layout u-sidenav-overflow">
+              <div class="u-menu-close"></div>
+              <ul class="u-align-center u-nav u-popupmenu-items u-unstyled u-nav-2">
+                <li class="u-nav-item"><a class="u-button-style u-nav-link" href="/admin">Admin</a>
+                </li>
+                <li class="u-nav-item"><a class="u-button-style u-nav-link" href="/dm">Inbox</a>
+                </li>
+                <li class="u-nav-item"><button id="logoutButton2" style="color: black;">Logout</button>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="u-black u-menu-overlay u-opacity u-opacity-70"></div>
+        </div>
+      </nav>
+    </div>
+  </header>
+  <section class="u-clearfix u-section-1" id="sec-b754">
+    <div
+      class="u-clearfix u-sheet u-valign-middle-lg u-valign-middle-md u-valign-middle-sm u-valign-middle-xl u-sheet-1">
+      <p class="u-custom-font u-text u-text-1">All Clients </p>
+    </div>
+  </section>
+  <section class="u-clearfix u-section-2" id="sec-820d">
+    <div class="u-clearfix u-sheet u-valign-bottom-md u-valign-bottom-sm u-valign-bottom-xs u-sheet-1">
+      <div id="userList">
+        {{ range . }}
+        <div
+          class="u-border-3 u-border-palette-5-light-1 u-container-style u-custom-color-2 u-expanded-width u-group u-opacity u-opacity-45 u-radius u-shape-round u-group-1">
+          <div class="u-container-layout u-container-layout-1">
+            <h3 class="u-custom-font u-text u-text-1">{{ .name }}</h3>
+            <h3
+              class="u-custom-font u-text u-text-default-lg u-text-default-md u-text-default-sm u-text-default-xl u-text-2">
+              {{ .email }}</h3>
+            <a href="/user?email={{ .email }}"
+              class="u-border-none u-btn u-btn-round u-button-style u-hover-custom-color-2 u-radius u-white u-btn-1">OPEN<span
+                style="font-weight: 700;"></span>
+            </a>
+          </div>
+        </div>
+        {{ end }}
+      </div>
+    </div>
+  </section>
+
+
+
+  <footer class="u-align-center u-clearfix u-footer u-grey-80 u-footer" id="sec-06be">
+    <div class="u-clearfix u-sheet u-valign-middle u-sheet-1">
+      <p class="u-small-text u-text u-text-variant u-text-1"> © 2024 Blissful Bites</p>
+    </div>
+  </footer>
+
+</body>
+
+</html>

@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, 
+						initial-scale=1.0">
+    <title>Blissful Bites</title>
+    <link rel="stylesheet" href="./static/login.css">
+</head>
+
+<body>
+    <header>
+        <img class="logo" src="/images/logo-no-background.svg" alt="logo" style="height: 90px; width: 400px;">
+    </header>
+
+    <!-- container div -->
+    <div class="container" style="border-radius: 10px;">
+
+        <!-- upper button section to select
+			the login or signup form -->
+        <div class="slider"></div>
+        <div class="btn">
+            <button class="login">Login</button>
+            <button class="signup">Signup</button>
+        </div>
+
+        <!-- Form section that contains the
+			login and the signup form -->
+        <div class="form-section">
+
+            <!-- login form -->
+            <div class="login-box">
+                <form id="signInForm">
+                    <input type="email" class="email ele" name="email" placeholder="youremail@email.com" required><br>
+                    <input type="password" class="password ele" name="password" placeholder="password" required><br>
+                    <center><button class="clkbtn" type="submit">Login</button></center>
+                </form>
+            </div>
+
+            <!-- signup form -->
+            <div class="signup-box">
+                <form id="signUpForm">
+                    <input type="email" class="email ele" name="email" placeholder="youremail@email.com" required><br>
+                    <input type="password" class="password ele" name="password" placeholder="password" required><br>
+                    <button class="clkbtn" type="submit">Sign Up</button>
+                </form>
+            </div>
+        </div>
+        <br>
+        <br>
+    </div>
+    <script>
+        let signup = document.querySelector(".signup");
+        let login = document.querySelector(".login");
+        let slider = document.querySelector(".slider");
+        let formSection = document.querySelector(".form-section");
+
+        signup.addEventListener("click", () => {
+            slider.classList.add("moveslider");
+            formSection.classList.add("form-section-move");
+        });
+
+        login.addEventListener("click", () => {
+            slider.classList.remove("moveslider");
+            formSection.classList.remove("form-section-move");
+        });
+    </script>
+    <script>
+        const signInForm = document.getElementById('signInForm');
+        const signUpForm = document.getElementById('signUpForm');
+
+        signInForm.addEventListener('submit', async (event) => {
+            event.preventDefault();
+
+            const email = signInForm.email.value;
+            const password = signInForm.password.value;
+
+            try {
+                const response = await fetch('/signin', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ username: email, password: password })
+                });
+
+                const data = await response.json();
+
+                if (response.ok) {
+                    // Store email in session storage
+                    sessionStorage.setItem('userEmail', email);
+                    alert(data.message);
+                    window.location.href = "/dashboard";
+                } else {
+                    alert(data.error || 'Login failed');
+                }
+            } catch (error) {
+                console.error('Error during login:', error);
+                alert('An error occurred during login.');
+            }
+        });
+
+        signUpForm.addEventListener('submit', async (event) => {
+            event.preventDefault();
+
+            const email = signUpForm.email.value;
+            const password = signUpForm.password.value;
+
+            try {
+                const response = await fetch('/signup', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ username: email, password: password })
+                });
+
+                const data = await response.json();
+
+                if (response.ok) {
+                    // Store email in session storage
+                    sessionStorage.setItem('userEmail', email);
+                    alert(data.message);
+                    window.location.href = "/form";
+                } else {
+                    alert(data.error || 'Signup failed');
+                }
+            } catch (error) {
+                console.error('Error during signup:', error);
+                alert('An error occurred during signup.');
+            }
+        });
+    </script>
+    <br>
+</body>
+
+</html>

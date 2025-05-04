@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html style="font-size: 16px;" lang="en">
+
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="utf-8">
+  <meta name="keywords" content="">
+  <meta name="description" content="">
+  <title>form</title>
+  <link rel="stylesheet" href="./static/nicepage.css" media="screen">
+  <link rel="stylesheet" href="./static/form.css" media="screen">
+  <script class="u-script" type="text/javascript" src="./static/jquery-1.9.1.min.js" defer=""></script>
+  <script class="u-script" type="text/javascript" src="./static/nicepage.js" defer=""></script>
+  <meta name="generator" content="Nicepage 6.7.8, nicepage.com">
+  <meta name="referrer" content="origin">
+  <link id="u-theme-google-font" rel="stylesheet"
+    href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i|Open+Sans:300,300i,400,400i,500,500i,600,600i,700,700i,800,800i">
+  <link id="u-page-google-font" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lobster:400">
+
+
+
+  <script type="application/ld+json">{
+		"@context": "http://schema.org",
+		"@type": "Organization",
+		"name": "WebSite6229931"
+}</script>
+  <meta name="theme-color" content="#478ac9">
+  <meta property="og:title" content="form">
+  <meta property="og:description" content="">
+  <meta property="og:type" content="website">
+  <meta data-intl-tel-input-cdn-path="intlTelInput/">
+</head>
+
+<body data-path-to-root="./" data-include-products="false" class="u-body u-stick-footer u-xl-mode" data-lang="en">
+  <section class="u-clearfix u-container-align-center u-image u-section-1" src="" id="sec-635b" data-image-width="1280"
+    data-image-height="960">
+    <div class="u-clearfix u-sheet u-sheet-1">
+      <div
+        class="u-align-center u-container-style u-group u-opacity u-opacity-70 u-radius u-shape-round u-white u-group-1">
+        <div class="u-container-layout u-container-layout-1">
+          <h3 class="u-align-center u-custom-font u-font-lobster u-text u-text-1">Health and fitness form</h3>
+          <div class="u-form u-form-1">
+            <form id="healthForm" action="/userFormDetails" method="post"
+              
+              style="padding: 10px;">
+              <div class="u-form-group u-form-name">
+                <label for="name" class="u-label"><b>Name</b></label>
+                <input type="text" placeholder="Enter your Name" id="name" name="name" class="u-input u-input-rectangle"
+                  required="">
+              </div>
+
+              <div class="u-form-group u-form-email">
+                <label for="visible-email" class="u-label"><b>Email</b></label>
+                <input type="email" placeholder="Enter your Email" id="visible-email" name="email" class="u-input u-input-rectangle"
+                  required="">
+              </div>
+
+              <div class="u-form-group u-form-gender">
+                <label for="gender" class="u-label"><b>Gender</b></label>
+                <input type="radio" id="male" name="gender" value="male" class="u-input u-input-rectangle" required="">
+                <label for="male" class="u-label">Male</label>
+                <input type="radio" id="female" name="gender" value="female" class="u-input u-input-rectangle"
+                  required="">
+                <label for="female" class="u-label">Female</label>
+              </div>
+
+              <div class="u-form-group u-form-age">
+                <br>
+                <label for="age" class="u-label"><b>Age</b></label>
+                <input type="number" placeholder="Enter your age" id="age" name="age" class="u-input u-input-rectangle"
+                  required=""></input>
+              </div>
+
+              <div class="u-form-group u-form-age">
+                <label for="activityLevel" class="u-label"><b>Activity Level</b></label>
+                <select id="activityLevel" name="activityLevel">
+                  <option value="Little">Little</option>
+                  <option value="moderate">Moderate</option>
+                  <option value="active">Active</option>
+                </select><br>
+              </div>
+
+              <div class="u-form-group u-form-goals">
+                <label for="goals" class="u-label"><b>Fitness Goals:</b></label><br>
+                <input type="checkbox" id="weightLoss" name="goals" value="weight-loss">
+                <label for="weightLoss">Weight Loss</label><br>
+                <input type="checkbox" id="muscleGain" name="goals" value="muscle-gain">
+                <label for="muscleGain">Muscle Gain</label><br>
+                <input type="checkbox" id="coachGuidance" name="goals" value="coach-guidance">
+                <label for="coachGuidance">Coach Guidance</label><br>
+                <input type="checkbox" id="calorieTracking" name="goals" value="calorie-tracking">
+                <label for="calorieTracking">Calorie tracking</label><br>
+                <input type="checkbox" id="dietPlan" name="goals" value="diet-plan">
+                <label for="dietPlan">Diet Plan</label><br>
+                <input type="checkbox" id="intermittentFasting" name="goals" value="intermittent-fasting">
+                <label for="intermittentFasting">Intermittent Fasting</label><br>
+                <input type="checkbox" id="workoutsYoga" name="goals" value="workouts-yoga">
+                <label for="workoutsYoga">Workouts and Yoga</label><br>
+                <input type="checkbox" id="maintenance" name="goals" value="maintenance">
+                <label for="maintenance">Maintenance</label>
+              </div>
+
+              <div class="u-form-group u-form-goals">
+                <label for="height" class="u-label"><b>Height (in cm):</b></label><br>
+                <input type="number" id="height" name="height" class="u-input u-input-rectangle" required>
+              </div>
+
+              <div class="u-form-group u-form-goals">
+                <label for="weight" class="u-label"><b>Weight (in kg):</b></label><br>
+                <input type="number" id="weight" name="weight" class="u-input u-input-rectangle" required>
+              </div>
+
+              <div class="u-form-group u-form-goals">
+                <label for="tweight" class="u-label"><b>Target Weight (in kg):</b></label><br>
+                <input type="number" id="tweight" name="tweight" class="u-input u-input-rectangle" required>
+              </div>
+
+              <div class="u-form-group u-form-diseases">
+                <label for="disease"><b>Any medical condition we should be aware of?</b></label><br>
+                <input type="checkbox" id="diabetes" name="disease" value="Diabetes">
+                <label for="diabetes">Diabetes</label><br>
+                <input type="checkbox" id="cholesterol" name="disease" value="Cholesterol">
+                <label for="cholesterol">Cholesterol</label><br>
+                <input type="checkbox" id="hypertension" name="disease" value="Hypertension">
+                <label for="hypertension">Hypertension</label><br>
+                <input type="checkbox" id="pCos" name="disease" value="PCos">
+                <label for="pCos">PCos</label><br>
+                <input type="checkbox" id="thyroid" name="disease" value="Thyroid">
+                <label for="thyroid">Thyroid</label><br>
+                <input type="checkbox" id="sleepIssues" name="disease" value="Sleep-issues">
+                <label for="sleepIssues">Sleep issues</label><br>
+                <input type="checkbox" id="depression" name="disease" value="Depression">
+                <label for="depression">Depression</label><br>
+                <input type="checkbox" id="physicalInjury" name="disease" value="Physical-Injury">
+                <label for="physicalInjury">Physical Injury</label><br>
+                <input type="checkbox" id="stress" name="disease" value="stress">
+                <label for="stress">Stress</label><br>
+                <input type="checkbox" id="loneliness" name="disease" value="Loneliness">
+                <label for="loneliness">Loneliness</label><br><br>
+              </div>
+
+              <div class="u-form-group u-form-hs">
+                <label for="healthscore"><b>Healthscore (out of 10):</b></label><br>
+                <input type="number" id="healthscore" name="healthscore" class="u-input u-input-rectangle" required>
+              </div>
+              <input type="hidden" id="email" name="email">
+
+              <div class="u-align-left u-form-group u-form-submit">
+                <!-- <a href="#" class="u-border-none u-btn u-btn-submit u-button-style u-btn-1">Submit</a> -->
+                <input type="submit" value="submit" >
+              </div>
+              <!-- <div class="u-form-send-message u-form-send-success"> Thank you! Your message has been sent. </div> -->
+              <!-- <div class="u-form-send-error u-form-send-message"> Unable to send your message. Please fix errors then
+                try again. </div> -->
+              <!-- <input type="hidden" value="" name="recaptchaResponse"> -->
+              <!-- <input type="hidden" name="formServices" value="582d8edf-8764-bb89-e2e7-bb39b9ddeed2"> -->
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+
+  <footer class="u-align-center u-clearfix u-footer u-grey-80 u-footer" id="sec-06be">
+    <div class="u-clearfix u-sheet u-valign-middle u-sheet-1">
+      <p class="u-small-text u-text u-text-variant u-text-1"> © 2024 Blissful Bites</p>
+    </div>
+  </footer>
+
+  <script>
+    // Check for session email
+    const userEmail = sessionStorage.getItem('userEmail');
+    if (!userEmail) {
+      console.log("[Auth] No user session found, redirecting to login");
+      window.location.href = "/login";
+    } else {
+      console.log("[Auth] Found user session:", userEmail);
+      // Set email in form
+      document.getElementById("visible-email").value = userEmail;
+      document.getElementById("email").value = userEmail;
+    }
+
+    // Handle logout
+    const logout = document.getElementById("logoutButton");
+    if (logout) {
+      logout.addEventListener('click', () => {
+        sessionStorage.removeItem('userEmail');
+        window.location.href = "/login";
+      });
+    }
+  </script>
+
+</body>
+
+</html>
